@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.sinch.gamehighscore.dto.CategoryDto;
 
 @Entity // This tells Hibernate to make a table out of this class
 @Table(name="category")
@@ -44,6 +45,10 @@ public class Category implements Serializable {
 
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
+	}
+
+	public CategoryDto convertEntityToDTO() {
+		return new CategoryDto(this.getName(), this.getImagePath());
 	}
 
 }
