@@ -1,18 +1,30 @@
+import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 
-const ComparePlayers = () => {
+const ComparePlayers = ({onClick}: any) => {
+
+    const [nameValue, setNameValue] = useState("")
+    const [nameValueExtra, setNameValueExtra] = useState("")
+
+    const handleOnSubmit = (evt: any) => {
+        evt.preventDefault()
+        onClick(nameValue, nameValueExtra)
+    }
+
     return (
         <div>
             <Form>
                 <Form.Label>Compare Users</Form.Label>
                 <Form.Group className="mb-3" controlId="searchPlayerA">
-                    <Form.Control type="text" placeholder="Player 1 name" />
+                    <Form.Control onChange={(evt) => setNameValue(evt.target.value)}
+                     value={nameValue} type="text" placeholder="Player 1 name" />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="searchPlayerB">
                     
-                    <Form.Control type="text" placeholder="Player 2 name" />
+                    <Form.Control onChange={(evt) => setNameValueExtra(evt.target.value)}
+                     value={nameValueExtra} type="text" placeholder="Player 2 name" />
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button onClick={handleOnSubmit} variant="primary" type="submit">
                     Submit
                 </Button>
             </Form>

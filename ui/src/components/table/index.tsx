@@ -12,15 +12,7 @@ type iTableList = {
     children: JSX.Element[]
 }
 
-
-/**
- * This is not the best way to do a component
- * TODO: add compound architecture to this component
- */
 const TableList = ({ children }: iTableList): JSX.Element => {
-    // if (bodyProperties?.length !== headerProperties.length) {
-    //     throw new Error('Size of header columns is different of body columns.')
-    // }
     return (
         <Table striped bordered hover>
             {children}
@@ -47,14 +39,15 @@ const tableHeader = ({ headerProperties }: iTableHeader) => {
 
 type iTableBody = {
     bodyProperties: iBody[];
-    data: any[]
+    data: any[];
+    onClick:(item: any) => void
 }
-const tableBody = ({ data, bodyProperties }: iTableBody) => {
+const tableBody = ({ data, bodyProperties, onClick }: iTableBody) => {
     return (
         <tbody data-testid="scoreList">
             {data?.map((item: any, index: number) => {
                 return (
-                    <tr key={index}>
+                    <tr onClick={() => onClick(item)} key={index}>
                         {bodyProperties.map((i, id: number) => <td key={id}>{item[i.key]}</td>)}
                     </tr>
                 )

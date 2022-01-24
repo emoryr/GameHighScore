@@ -3,10 +3,11 @@ import TableList from '../table'
 
 type iList = {
     loading: boolean;
-    categories: iCategory[]
+    categories: iCategory[];
+    onClick: (item: any) => void
 }
 
-export default function CategoryList({ loading, categories }: iList) {
+export default function CategoryList({ loading, categories, onClick }: iList) {
     return (
         <div>
             {loading ? (
@@ -16,7 +17,7 @@ export default function CategoryList({ loading, categories }: iList) {
                 <TableList>
                     <TableList.Header headerProperties={[
                         { label: 'Category' }]} />
-                    <TableList.Body data={categories} bodyProperties={[
+                    <TableList.Body onClick={onClick}  data={categories} bodyProperties={[
                         { key: 'name' }]} />
                 </TableList>
             )}

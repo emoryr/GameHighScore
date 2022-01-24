@@ -3,7 +3,7 @@ import CategoryList from '../categoryList/list';
 import RequestApi from '../../helper/apiHelper';
 import { iCategory } from '../../interfaceModel/category';
 
-const Categories = () => {
+const Categories = ({onClick}: any) => {
     const [categories, setCategories] = useState<iCategory[] | []>([]);
     const [loading, setLoading] = useState(true);
 
@@ -18,7 +18,7 @@ const Categories = () => {
     }, []);
 
     return (
-        <CategoryList categories={categories} loading={loading}/>
+        <CategoryList onClick={onClick} categories={categories} loading={loading}/>
     );
 }
 
