@@ -17,7 +17,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = MyApplication.class)
-@Sql({"/import_players.sql", "/import_categories.sql", "/import_scores.sql"})
 public class InitLoadIntegrationTest {
 
     @Autowired
@@ -37,7 +36,7 @@ public class InitLoadIntegrationTest {
 
     @Test
     public void testLoadDataForCategoryClass() {
-        assertEquals(7, categoryRepository.findAll()
+        assertEquals(6, categoryRepository.findAll()
             .size());
     }
 
