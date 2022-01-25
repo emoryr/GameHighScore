@@ -25,4 +25,3 @@ Contain an implementation to return the high scores of a game
 # Problems to solve
 
     - UI docker
-    - Create unit test to ui

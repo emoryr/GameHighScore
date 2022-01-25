@@ -2,7 +2,11 @@ import axios from "axios";
 import { iScore } from "../interfaceModel/score";
 import { iCategory } from "../interfaceModel/category";
 
-const baseURL = "http://localhost:8080/";
+
+let baseURL = "http://localhost:8080/";
+if (process.env.HOST_PATH) {
+    baseURL = process.env.HOST_PATH;
+}
 
 async function getScores(endpoint: string): Promise<iScore[]> {
     try {
