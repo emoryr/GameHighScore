@@ -1,4 +1,4 @@
-version: "3"
+version: "3.3"
 services:
   mysql:
     image: mysql
@@ -20,7 +20,7 @@ services:
   api:
     image: com.sinch.gamehighscore/gamehighscore-api
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/database?autoReconnect=true&useSSL=false
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/sinch?autoReconnect=true&allowPublicKeyRetrieval=true&useSSL=false
     networks:
       - spring
     ports:
